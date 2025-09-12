@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NAVTTC Day 6 Exercise - OSINT</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0d0d0d;
+      color: #e0e0e0;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      font-size: 60px;
+      color: #00ff00;
+      text-shadow: 0 0 10px #00ff00, 
+                   0 0 20px #00ff00, 
+                   0 0 40px #00ff00;
+      margin-bottom: 40px;
+    }
+    .question {
+      background: #1a1a1a;
+      padding: 20px;
+      margin: 20px 0;
+      border: 1px solid #333;
+      border-radius: 6px;
+    }
+    .question h2 {
+      margin-top: 0;
+      font-size: 18px;
+      font-weight: bold;
+      color: #b0ffb0;
+    }
+    input[type=text] {
+      width: 60%;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #555;
+      margin-right: 10px;
+      background: #0d0d0d;
+      color: #fff;
+    }
+    button {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 4px;
+      background-color: #00cc66;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background-color: #00994d;
+    }
+    .feedback {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .correct {
+      color: #00ff00;
+    }
+    .wrong {
+      color: #ff3333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>NAVTTC Day 6 Exercise - OSINT</h1>
+
+    <div class="question">
+      <h2>1. Lookup reddit.com on DNSDumpster. What is one interesting subdomain you would discover in addition to ads and developers?</h2>
+      <input type="text" id="q1">
+      <button onclick="checkAnswer('q1','business')">Check</button>
+      <p class="feedback" id="feedback-q1"></p>
+    </div>
+
+    <div class="question">
+      <h2>2. According to Shodan.io, what is the first country in the world in terms of the number of publicly accessible Apache servers?</h2>
+      <input type="text" id="q2">
+      <button onclick="checkAnswer('q2','United States')">Check</button>
+      <p class="feedback" id="feedback-q2"></p>
+    </div>
+
+    <div class="question">
+      <h2>3. Based on Shodan.io, what is the 3rd most common port used for Apache?</h2>
+      <input type="text" id="q3">
+      <button onclick="checkAnswer('q3','8080')">Check</button>
+      <p class="feedback" id="feedback-q3"></p>
+    </div>
+
+    <div class="question">
+      <h2>4. Based on Shodan.io, what is the 3rd most common port used for nginx?</h2>
+      <input type="text" id="q4">
+      <button onclick="checkAnswer('q4','5001')">Check</button>
+      <p class="feedback" id="feedback-q4"></p>
+    </div>
+
+    <div class="question">
+      <h2>5. What is the 2nd most popular country for MYSQL servers in Google's ASN?</h2>
+      <input type="text" id="q5">
+      <button onclick="checkAnswer('q5','United Kingdom')">Check</button>
+      <p class="feedback" id="feedback-q5"></p>
+    </div>
+
+    <div class="question">
+      <h2>6. Under Google's ASN, which is more popular for nginx, Hypertext Transfer Protocol or Hypertext Transfer Protocol with SSL?</h2>
+      <input type="text" id="q6">
+      <button onclick="checkAnswer('q6','Hypertext Transfer Protocol')">Check</button>
+      <p class="feedback" id="feedback-q6"></p>
+    </div>
+
+    <div class="question">
+      <h2>7. Under Google's ASN, what is the most popular city?</h2>
+      <input type="text" id="q7">
+      <button onclick="checkAnswer('q7','Kansas City')">Check</button>
+      <p class="feedback" id="feedback-q7"></p>
+    </div>
+
+    <div class="question">
+      <h2>8. Under Google's ASN in Los Angeles, what is the top operating system according to Shodan?</h2>
+      <input type="text" id="q8">
+      <button onclick="checkAnswer('q8','Linux')">Check</button>
+      <p class="feedback" id="feedback-q8"></p>
+    </div>
+
+    <div class="question">
+      <h2>9. Using the top Webcam search from the explore page, does Google's ASN have any webcams? (Yay / nay)</h2>
+      <input type="text" id="q9">
+      <button onclick="checkAnswer('q9','nay')">Check</button>
+      <p class="feedback" id="feedback-q9"></p>
+    </div>
+  </div>
+
+  <script>
+    function checkAnswer(inputId, correctAnswer) {
+      const userInput = document.getElementById(inputId).value.trim().toLowerCase();
+      const feedback = document.getElementById('feedback-' + inputId);
+      if (userInput === correctAnswer.toLowerCase()) {
+        feedback.textContent = "✅ Correct!";
+        feedback.className = "feedback correct";
+      } else {
+        feedback.textContent = "❌ Wrong, try again.";
+        feedback.className = "feedback wrong";
+      }
+    }
+  </script>
+</body>
+</html>
+
