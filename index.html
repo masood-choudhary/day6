@@ -8,7 +8,7 @@
     body {
       font-family: Arial, sans-serif;
       background-color: #0d0d0d;
-      color: #e0e0e0;
+      color: #e0e0e0; /* Normal readable text */
       margin: 0;
       padding: 20px;
       line-height: 1.6;
@@ -16,6 +16,15 @@
     .container {
       max-width: 800px;
       margin: auto;
+    }
+    .banner {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .banner img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
     }
     h1 {
       text-align: center;
@@ -37,7 +46,7 @@
       margin-top: 0;
       font-size: 18px;
       font-weight: bold;
-      color: #b0ffb0;
+      color: #e0e0e0; /* Normal color, not green */
     }
     input[type=text] {
       width: 60%;
@@ -74,6 +83,12 @@
 </head>
 <body>
   <div class="container">
+
+    <!-- Banner Image -->
+    <div class="banner">
+      <img src="image.jpeg" alt="Banner">
+    </div>
+
     <h1>NAVTTC Day 6 Exercise - OSINT</h1>
 
     <div class="question">
@@ -152,7 +167,17 @@
         feedback.className = "feedback wrong";
       }
     }
+
+    // Add Enter key detection for all inputs
+    document.querySelectorAll("input[type=text]").forEach(input => {
+      input.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          const button = this.nextElementSibling;
+          if (button) button.click();
+        }
+      });
+    });
   </script>
 </body>
 </html>
-
